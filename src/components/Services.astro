@@ -45,11 +45,6 @@ const services = [
             </h3>
             <p class="services__desc">{s.description}</p>
           </div>
-          {!s.featured && (
-            <svg class="services__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          )}
         </li>
       ))}
     </ol>
@@ -103,49 +98,26 @@ const services = [
 
   &__item {
     display: grid;
-    grid-template-columns: 3rem 1fr auto;
+    grid-template-columns: 3rem 1fr;
     gap: 1.5rem 2rem;
-    align-items: center;
+    align-items: start;
     padding-block: 2rem;
     border-bottom: 1px solid $color-border;
-    transition: background $transition;
 
     @include respond-to('md') {
-      grid-template-columns: 4rem 1fr auto;
+      grid-template-columns: 4rem 1fr;
       padding-block: 2.5rem;
     }
 
-    &:hover:not(&--featured) {
-      background: $color-bg-alt;
-      margin-inline: -1.5rem;
-      padding-inline: 1.5rem;
-      border-radius: $radius-sm;
-    }
-
     &--featured {
-      background: $color-accent;
-      border-bottom-color: transparent;
-      margin-inline: -1.5rem;
-      padding-inline: 1.5rem;
-      border-radius: $radius-md;
-      color: white;
-      box-shadow: $shadow-md;
-
-      @include respond-to('md') {
-        margin-inline: -2.5rem;
-        padding-inline: 2.5rem;
-      }
+      border-bottom-color: $color-accent-bg;
+      border-left: 3px solid $color-accent;
+      padding-left: 1.5rem;
+      background: $color-accent-bg;
 
       .services__num {
-        color: rgba(255, 255, 255, 0.25);
-      }
-
-      .services__title {
-        color: white;
-      }
-
-      .services__desc {
-        color: rgba(255, 255, 255, 0.8);
+        color: $color-accent;
+        opacity: 0.35;
       }
     }
   }
@@ -180,8 +152,8 @@ const services = [
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: $color-accent;
-    background: white;
+    color: white;
+    background: $color-accent;
     padding: 0.2rem 0.6rem;
     border-radius: $radius-pill;
   }
@@ -191,17 +163,6 @@ const services = [
     color: $color-text-muted;
     line-height: 1.75;
     max-width: 560px;
-  }
-
-  &__arrow {
-    color: $color-text-subtle;
-    flex-shrink: 0;
-    transition: transform $transition, color $transition;
-
-    .services__item:hover & {
-      transform: translateX(4px);
-      color: $color-accent;
-    }
   }
 
   &__cta {
