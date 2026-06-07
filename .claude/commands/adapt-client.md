@@ -138,6 +138,11 @@ Exemples de sections possibles (non exhaustif) : accroche, services, réalisatio
 
 **`src/components/` est vide** — créer uniquement les composants justifiés par la structure définie à l'étape 2.
 
+**Règle de composition** : chaque section doit avoir un squelette HTML/SCSS distinct.
+Interdit de répéter le même gabarit `tag + titre centré + grille symétrique` sur toutes les sections —
+c'est la signature visuelle d'un autre site, pas de celui-ci.
+La DA précise le squelette attendu pour chaque section : s'y conformer.
+
 Règles pour chaque composant `.astro` :
 - Importer `{ site }` depuis `@/config/site` si les données structurées sont nécessaires
 - Utiliser `@use '../styles/foundations' as *` pour accéder aux variables et mixins
