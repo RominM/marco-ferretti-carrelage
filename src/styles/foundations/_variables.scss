@@ -1,43 +1,33 @@
-// Générées par /adapt-client depuis my-workspace/clients/[slug]/site.ts
-// Toutes les valeurs sont à définir — aucune valeur par défaut volontaire
+// Générées par adapt-client depuis my-workspace/clients/marco-ferretti-carrelage/site.ts
 
-// Fonds
-$color-bg:           null;
-$color-bg-alt:       null;
-$color-bg-card:      null;
-$color-border:       null;
+$color-bg:           #F9F8F6;
+$color-bg-alt:       #F4F1EC;
+$color-bg-card:      #FFFFFF;
+$color-border:       #EDE8E0;
 
-// Accent
-$color-accent:       null;
-$color-accent-dark:  null;
-$color-accent-bg:    null;
+$color-accent:       #E0621C;
+$color-accent-dark:  #B94E16;
+$color-accent-bg:    #FBF0E9;
 
-// Secondaire
-$color-secondary:    null;
-$color-secondary-bg: null;
+$color-secondary:    #2B5FA8;
+$color-secondary-bg: #E8EFF8;
 
-// Texte
-$color-text:         null;
-$color-text-muted:   null;
-$color-text-subtle:  null;
+$color-text:         #1C1916;
+$color-text-muted:   #6B6460;
+$color-text-subtle:  #9E9894;
 
-// Ombres
-$shadow-sm: null;
-$shadow-md: null;
-$shadow-lg: null;
+$shadow-sm: 0 1px 4px rgba(224, 98, 28, 0.08);
+$shadow-md: 0 4px 16px rgba(224, 98, 28, 0.12);
+$shadow-lg: 0 8px 32px rgba(224, 98, 28, 0.16);
 
-// Typographie
-$font-sans: null;
+$font-sans: 'Sora', system-ui, -apple-system, sans-serif;
 
-// Spacing
-$section-padding: null;
-$container-max:   null;
+$section-padding:  clamp(4rem, 10vw, 7rem);
+$container-max:    1100px;
 
-// Bordures
-$radius-sm:   null;
-$radius-md:   null;
-$radius-lg:   null;
-$radius-pill: null;
+$radius-sm:   8px;
+$radius-md:   12px;
+$radius-lg:   20px;
+$radius-pill: 100px;
 
-// Transitions
-$transition: null;
+$transition: 0.2s ease;
