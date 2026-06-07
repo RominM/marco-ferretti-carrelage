@@ -1,25 +1,24 @@
 export const site = {
-  name: 'Prénom',
-  fullName: 'Prénom Nom — Activité',
-  url: 'https://domaine-client.fr',
-  title: 'Titre SEO | Nom — Activité locale',
-  description: 'Description 160 caractères avec mots-clés locaux.',
+  name: 'Marco',
+  fullName: 'Marco Ferretti — Ferretti Carrelage',
+  url: 'https://a-definir.fr',
+  title: 'Carreleur à Montpellier & Béziers | Ferretti Carrelage',
+  description: 'Marco Ferretti, carreleur artisan à Villeneuve-lès-Béziers. Pose de carrelage, faïence et mosaïque sur Montpellier, Sète et Béziers. Devis gratuit.',
   address: {
-    locality: 'Ville',
-    region: 'Département',
-    postalCode: '00000',
+    locality: 'Villeneuve-lès-Béziers',
+    region: 'Hérault',
+    postalCode: '34420',
     country: 'FR'
   },
   areaServed: [
-    { type: 'City', name: 'Ville principale' },
-    { type: 'AdministrativeArea', name: 'Département' },
+    { type: 'City', name: 'Villeneuve-lès-Béziers' },
+    { type: 'City', name: 'Béziers' },
+    { type: 'City', name: 'Montpellier' },
+    { type: 'City', name: 'Sète' },
+    { type: 'AdministrativeArea', name: 'Hérault' },
   ],
   priceRange: '€€',
   openingHours: [
-    {
-      days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '18:00'
-    }
+    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:30', closes: '19:00' }
   ]
 }

@@ -1,1 +1,97 @@
 @use 'reset';
+@use 'foundations' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-sans;
+  background-color: $color-bg;
+  color: $color-text;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.section-tag {
+  display: inline-flex;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-secondary;
+  background: $color-secondary-bg;
+  padding: 0.3rem 0.75rem;
+  border-radius: $radius-pill;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: $radius-pill;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all $transition;
+  border: 2px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &--primary {
+    background: $color-accent;
+    color: #fff;
+    border-color: $color-accent;
+
+    &:hover {
+      background: $color-accent-dark;
+      border-color: $color-accent-dark;
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: $color-accent;
+    border-color: $color-accent;
+
+    &:hover {
+      background: $color-accent-bg;
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: $color-text;
+    border-color: $color-border;
+
+    &:hover {
+      border-color: $color-accent;
+      color: $color-accent;
+    }
+  }
+}

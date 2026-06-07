@@ -1,0 +1,394 @@
+---
+const serviceTypes = [
+  'Carrelage sol (intérieur)',
+  'Carrelage sol (extérieur / terrasse)',
+  'Faïence murale',
+  'Mosaïque faite main',
+  'Rénovation salle de bain complète',
+  'Autre',
+]
+
+const deadlines = [
+  'Dans le mois',
+  'Dans les 3 mois',
+  'Dans les 6 mois',
+  'Pas de contrainte de délai',
+]
+---
+
+<section id="contact" class="contact">
+  <div class="contact__inner">
+    <div class="contact__header">
+      <span class="section-tag">Devis gratuit</span>
+      <h2>Décrivez votre projet.<br/>Recevez un devis en 48h.</h2>
+      <p>
+        Plus votre demande est précise, plus le devis est juste.
+        Marco vous répond personnellement du lundi au vendredi.
+      </p>
+    </div>
+
+    <div class="contact__body">
+      <form
+        class="contact__form"
+        id="devis-form"
+        method="POST"
+        action="/api/contact"
+        novalidate
+      >
+        <div class="contact__row">
+          <div class="contact__field">
+            <label for="name">Nom complet *</label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Jean Dupont" />
+          </div>
+          <div class="contact__field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="jean@exemple.fr" />
+          </div>
+        </div>
+
+        <div class="contact__row">
+          <div class="contact__field">
+            <label for="phone">Téléphone *</label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78" />
+          </div>
+          <div class="contact__field">
+            <label for="serviceType">Type de prestation *</label>
+            <select id="serviceType" name="serviceType" required>
+              <option value="" disabled selected>Choisir…</option>
+              {serviceTypes.map(s => <option value={s}>{s}</option>)}
+            </select>
+          </div>
+        </div>
+
+        <div class="contact__row">
+          <div class="contact__field">
+            <label for="surface">Surface approximative (m²)</label>
+            <input type="number" id="surface" name="surface" min="1" max="9999" placeholder="Ex. 15" />
+          </div>
+          <div class="contact__field">
+            <label for="deadline">Délai souhaité</label>
+            <select id="deadline" name="deadline">
+              <option value="" disabled selected>Choisir…</option>
+              {deadlines.map(d => <option value={d}>{d}</option>)}
+            </select>
+          </div>
+        </div>
+
+        <div class="contact__field contact__field--full">
+          <label for="description">Décrivez votre projet *</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="5"
+            required
+            placeholder="Ex. : salle de bain de 8m², douche à l'italienne, carrelage mural jusqu'au plafond, mosaïque sur la niche…"
+          ></textarea>
+        </div>
+
+        <div class="contact__field contact__field--full">
+          <label for="photos">Photos du chantier actuel (optionnel)</label>
+          <div class="contact__file-hint">
+            Vous pouvez envoyer vos photos directement par email après avoir rempli ce formulaire.
+            Marco vous répondra avec ses coordonnées.
+          </div>
+        </div>
+
+        <div class="contact__submit-row">
+          <button type="submit" class="btn btn--primary contact__submit">
+            Envoyer ma demande de devis
+          </button>
+          <p class="contact__legal">
+            Vos données ne sont utilisées que pour répondre à votre demande.
+          </p>
+        </div>
+
+        <div class="contact__feedback contact__feedback--success" id="form-success" hidden>
+          Votre demande a bien été envoyée. Marco vous répondra sous 48h.
+        </div>
+        <div class="contact__feedback contact__feedback--error" id="form-error" hidden>
+          Une erreur est survenue. Réessayez ou appelez directement Marco.
+        </div>
+      </form>
+
+      <aside class="contact__reassurances">
+        <div class="contact__reassurance">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="#E0621C" stroke-width="1.5"/>
+            <path d="M9 12l2 2 4-4" stroke="#E0621C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>Devis gratuit et sans engagement</strong>
+            <span>Réponse personnelle sous 48h</span>
+          </div>
+        </div>
+        <div class="contact__reassurance">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#E0621C" stroke-width="1.5"/>
+            <circle cx="12" cy="9" r="2.5" stroke="#E0621C" stroke-width="1.5"/>
+          </svg>
+          <div>
+            <strong>Montpellier · Sète · Béziers</strong>
+            <span>Déplacement dans tout l'Hérault</span>
+          </div>
+        </div>
+        <div class="contact__reassurance">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="6" width="18" height="15" rx="2" stroke="#E0621C" stroke-width="1.5"/>
+            <path d="M3 10h18M8 3v3M16 3v3" stroke="#E0621C" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <strong>Lundi – Vendredi</strong>
+            <span>Disponible de 8h30 à 19h00</span>
+          </div>
+        </div>
+        <div class="contact__reassurance">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" stroke="#E0621C" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>8 ans d'expérience</strong>
+            <span>Mosaïque faite main, haut de gamme</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('devis-form') as HTMLFormElement | null
+  const success = document.getElementById('form-success')
+  const error = document.getElementById('form-error')
+
+  form?.addEventListener('submit', async e => {
+    e.preventDefault()
+    const submit = form.querySelector<HTMLButtonElement>('.contact__submit')
+    if (submit) {
+      submit.disabled = true
+      submit.textContent = 'Envoi en cours…'
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: new FormData(form),
+      })
+
+      if (res.ok || res.redirected) {
+        form.hidden = true
+        if (success) success.hidden = false
+      } else {
+        throw new Error('server error')
+      }
+    } catch {
+      if (error) error.hidden = false
+      if (submit) {
+        submit.disabled = false
+        submit.textContent = 'Envoyer ma demande de devis'
+      }
+    }
+  })
+</script>
+
+<style lang="scss">
+@use '../styles/foundations' as *;
+
+.contact {
+  background: $color-secondary-bg;
+  padding-block: $section-padding;
+
+  &__inner {
+    @include container;
+  }
+
+  &__header {
+    max-width: 600px;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      color: $color-text-muted;
+      line-height: 1.75;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+
+    @include respond-to('lg') {
+      grid-template-columns: 1fr 340px;
+    }
+  }
+
+  &__form {
+    background: $color-bg-card;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: $shadow-sm;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+
+    @include respond-to('md') {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    &--full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: $color-text;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      font-family: $font-sans;
+      font-size: 0.9rem;
+      color: $color-text;
+      background: $color-bg;
+      border: 1px solid $color-border;
+      border-radius: $radius-sm;
+      padding: 0.625rem 0.875rem;
+      transition: border-color $transition, box-shadow $transition;
+      outline: none;
+      appearance: none;
+
+      &::placeholder {
+        color: $color-text-subtle;
+      }
+
+      &:focus {
+        border-color: $color-accent;
+        box-shadow: 0 0 0 3px $color-accent-bg;
+      }
+    }
+
+    select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6460' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.875rem center;
+      padding-right: 2.5rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.65;
+    }
+  }
+
+  &__file-hint {
+    font-size: 0.825rem;
+    color: $color-text-muted;
+    line-height: 1.65;
+    background: $color-accent-bg;
+    border: 1px solid #EDCFB8;
+    border-radius: $radius-sm;
+    padding: 0.75rem 1rem;
+  }
+
+  &__submit-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__submit {
+    align-self: flex-start;
+    font-size: 0.925rem;
+  }
+
+  &__legal {
+    font-size: 0.75rem;
+    color: $color-text-subtle;
+  }
+
+  &__feedback {
+    padding: 1rem 1.25rem;
+    border-radius: $radius-sm;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    &--success {
+      background: #ecfdf5;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    &--error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+  }
+
+  &__reassurances {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  &__reassurance {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: $color-bg-card;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    padding: 1rem 1.25rem;
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    strong {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: $color-text;
+    }
+
+    span {
+      font-size: 0.8rem;
+      color: $color-text-muted;
+    }
+  }
+}
+</style>
