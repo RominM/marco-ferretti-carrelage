@@ -17,141 +17,136 @@ const deadlines = [
 ---
 
 <section id="contact" class="contact">
-  <div class="contact__inner">
-    <div class="contact__header">
-      <span class="section-tag">Devis gratuit</span>
-      <h2>Décrivez votre projet.<br/>Recevez un devis en 48h.</h2>
-      <p>
-        Plus votre demande est précise, plus le devis est juste.
-        Marco vous répond personnellement du lundi au vendredi.
+  <div class="contact__aside">
+    <div class="contact__aside-inner">
+      <p class="contact__aside-label">Devis gratuit</p>
+      <h2 class="contact__aside-title">
+        Décrivez<br/>votre projet.
+      </h2>
+      <p class="contact__aside-sub">
+        Marco vous répond personnellement
+        sous 48h, du lundi au vendredi.
       </p>
+
+      <ul class="contact__infos" role="list">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="8" stroke="rgba(255,255,255,0.4)" stroke-width="1.25"/>
+            <path d="M6 9l2.5 2.5 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Devis gratuit, sans engagement
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="8" stroke="rgba(255,255,255,0.4)" stroke-width="1.25"/>
+            <path d="M6 9l2.5 2.5 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Réponse sous 48h
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="8" stroke="rgba(255,255,255,0.4)" stroke-width="1.25"/>
+            <path d="M6 9l2.5 2.5 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Lundi – Vendredi, 8h30 – 19h00
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="8" stroke="rgba(255,255,255,0.4)" stroke-width="1.25"/>
+            <path d="M6 9l2.5 2.5 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Déplacement dans tout l'Hérault
+        </li>
+      </ul>
+
+      <div class="contact__aside-logo" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="20,0 30,10 20,20 10,10" fill="rgba(255,255,255,0.5)"/>
+          <polygon points="30,10 40,20 30,30 20,20" fill="rgba(255,255,255,0.2)"/>
+          <polygon points="10,10 20,20 10,30 0,20" fill="rgba(255,255,255,0.3)"/>
+          <polygon points="20,20 30,30 20,40 10,30" fill="rgba(255,255,255,0.05)"/>
+        </svg>
+      </div>
     </div>
+  </div>
 
-    <div class="contact__body">
-      <form
-        class="contact__form"
-        id="devis-form"
-        method="POST"
-        action="/api/contact"
-        novalidate
-      >
-        <div class="contact__row">
-          <div class="contact__field">
-            <label for="name">Nom complet *</label>
-            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Jean Dupont" />
-          </div>
-          <div class="contact__field">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required autocomplete="email" placeholder="jean@exemple.fr" />
-          </div>
+  <div class="contact__form-panel">
+    <form
+      class="contact__form"
+      id="devis-form"
+      method="POST"
+      action="/api/contact"
+      novalidate
+    >
+      <div class="contact__row">
+        <div class="contact__field">
+          <label for="name">Nom complet *</label>
+          <input type="text" id="name" name="name" required autocomplete="name" placeholder="Jean Dupont" />
         </div>
+        <div class="contact__field">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required autocomplete="email" placeholder="jean@exemple.fr" />
+        </div>
+      </div>
 
-        <div class="contact__row">
-          <div class="contact__field">
-            <label for="phone">Téléphone *</label>
-            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78" />
-          </div>
-          <div class="contact__field">
-            <label for="serviceType">Type de prestation *</label>
-            <select id="serviceType" name="serviceType" required>
-              <option value="" disabled selected>Choisir…</option>
-              {serviceTypes.map(s => <option value={s}>{s}</option>)}
-            </select>
-          </div>
+      <div class="contact__row">
+        <div class="contact__field">
+          <label for="phone">Téléphone *</label>
+          <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78" />
         </div>
+        <div class="contact__field">
+          <label for="serviceType">Type de prestation *</label>
+          <select id="serviceType" name="serviceType" required>
+            <option value="" disabled selected>Choisir…</option>
+            {serviceTypes.map(s => <option value={s}>{s}</option>)}
+          </select>
+        </div>
+      </div>
 
-        <div class="contact__row">
-          <div class="contact__field">
-            <label for="surface">Surface approximative (m²)</label>
-            <input type="number" id="surface" name="surface" min="1" max="9999" placeholder="Ex. 15" />
-          </div>
-          <div class="contact__field">
-            <label for="deadline">Délai souhaité</label>
-            <select id="deadline" name="deadline">
-              <option value="" disabled selected>Choisir…</option>
-              {deadlines.map(d => <option value={d}>{d}</option>)}
-            </select>
-          </div>
+      <div class="contact__row">
+        <div class="contact__field">
+          <label for="surface">Surface approximative (m²)</label>
+          <input type="number" id="surface" name="surface" min="1" placeholder="Ex. 15" />
         </div>
+        <div class="contact__field">
+          <label for="deadline">Délai souhaité</label>
+          <select id="deadline" name="deadline">
+            <option value="" disabled selected>Choisir…</option>
+            {deadlines.map(d => <option value={d}>{d}</option>)}
+          </select>
+        </div>
+      </div>
 
-        <div class="contact__field contact__field--full">
-          <label for="description">Décrivez votre projet *</label>
-          <textarea
-            id="description"
-            name="description"
-            rows="5"
-            required
-            placeholder="Ex. : salle de bain de 8m², douche à l'italienne, carrelage mural jusqu'au plafond, mosaïque sur la niche…"
-          ></textarea>
-        </div>
+      <div class="contact__field">
+        <label for="description">Décrivez votre projet *</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="5"
+          required
+          placeholder="Salle de bain de 8m², douche à l'italienne, carrelage mural jusqu'au plafond, mosaïque sur la niche…"
+        ></textarea>
+      </div>
 
-        <div class="contact__field contact__field--full">
-          <label for="photos">Photos du chantier actuel (optionnel)</label>
-          <div class="contact__file-hint">
-            Vous pouvez envoyer vos photos directement par email après avoir rempli ce formulaire.
-            Marco vous répondra avec ses coordonnées.
-          </div>
-        </div>
+      <div class="contact__field contact__field--hint">
+        <strong>Photos du chantier actuel</strong>
+        <span>Envoyez vos photos par email après votre demande — Marco vous répondra avec ses coordonnées.</span>
+      </div>
 
-        <div class="contact__submit-row">
-          <button type="submit" class="btn btn--primary contact__submit">
-            Envoyer ma demande de devis
-          </button>
-          <p class="contact__legal">
-            Vos données ne sont utilisées que pour répondre à votre demande.
-          </p>
-        </div>
+      <div class="contact__actions">
+        <button type="submit" class="btn btn--primary contact__submit">
+          Envoyer ma demande
+        </button>
+        <p class="contact__legal">Vos données ne sont utilisées que pour répondre à votre demande.</p>
+      </div>
 
-        <div class="contact__feedback contact__feedback--success" id="form-success" hidden>
-          Votre demande a bien été envoyée. Marco vous répondra sous 48h.
-        </div>
-        <div class="contact__feedback contact__feedback--error" id="form-error" hidden>
-          Une erreur est survenue. Réessayez ou appelez directement Marco.
-        </div>
-      </form>
-
-      <aside class="contact__reassurances">
-        <div class="contact__reassurance">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="10" stroke="#E0621C" stroke-width="1.5"/>
-            <path d="M9 12l2 2 4-4" stroke="#E0621C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <div>
-            <strong>Devis gratuit et sans engagement</strong>
-            <span>Réponse personnelle sous 48h</span>
-          </div>
-        </div>
-        <div class="contact__reassurance">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#E0621C" stroke-width="1.5"/>
-            <circle cx="12" cy="9" r="2.5" stroke="#E0621C" stroke-width="1.5"/>
-          </svg>
-          <div>
-            <strong>Montpellier · Sète · Béziers</strong>
-            <span>Déplacement dans tout l'Hérault</span>
-          </div>
-        </div>
-        <div class="contact__reassurance">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3" y="6" width="18" height="15" rx="2" stroke="#E0621C" stroke-width="1.5"/>
-            <path d="M3 10h18M8 3v3M16 3v3" stroke="#E0621C" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <div>
-            <strong>Lundi – Vendredi</strong>
-            <span>Disponible de 8h30 à 19h00</span>
-          </div>
-        </div>
-        <div class="contact__reassurance">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" stroke="#E0621C" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
-          <div>
-            <strong>8 ans d'expérience</strong>
-            <span>Mosaïque faite main, haut de gamme</span>
-          </div>
-        </div>
-      </aside>
-    </div>
+      <div class="contact__feedback contact__feedback--success" id="form-success" hidden>
+        Votre demande a bien été envoyée. Marco vous répond sous 48h.
+      </div>
+      <div class="contact__feedback contact__feedback--error" id="form-error" hidden>
+        Une erreur est survenue. Réessayez ou contactez directement Marco.
+      </div>
+    </form>
   </div>
 </section>
 
@@ -163,29 +158,19 @@ const deadlines = [
   form?.addEventListener('submit', async e => {
     e.preventDefault()
     const submit = form.querySelector<HTMLButtonElement>('.contact__submit')
-    if (submit) {
-      submit.disabled = true
-      submit.textContent = 'Envoi en cours…'
-    }
+    if (submit) { submit.disabled = true; submit.textContent = 'Envoi en cours…' }
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        body: new FormData(form),
-      })
-
+      const res = await fetch('/api/contact', { method: 'POST', body: new FormData(form) })
       if (res.ok || res.redirected) {
         form.hidden = true
         if (success) success.hidden = false
       } else {
-        throw new Error('server error')
+        throw new Error()
       }
     } catch {
       if (error) error.hidden = false
-      if (submit) {
-        submit.disabled = false
-        submit.textContent = 'Envoyer ma demande de devis'
-      }
+      if (submit) { submit.disabled = false; submit.textContent = 'Envoyer ma demande' }
     }
   })
 </script>
@@ -194,53 +179,90 @@ const deadlines = [
 @use '../styles/foundations' as *;
 
 .contact {
-  background: $color-secondary-bg;
-  padding-block: $section-padding;
+  display: grid;
+  grid-template-columns: 1fr;
 
-  &__inner {
-    @include container;
+  @include respond-to('lg') {
+    grid-template-columns: 360px 1fr;
+    min-height: 680px;
   }
 
-  &__header {
-    max-width: 600px;
-    margin-bottom: 3rem;
+  &__aside {
+    background: $color-accent;
+    position: relative;
+    overflow: hidden;
+    padding: clamp(3rem, 8vw, 5rem) clamp(2rem, 5vw, 3rem);
+  }
+
+  &__aside-inner {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+    height: 100%;
+  }
 
-    h2 {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
+  &__aside-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+  }
 
-    p {
-      color: $color-text-muted;
-      line-height: 1.75;
+  &__aside-title {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800;
+    color: white;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  &__aside-sub {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+    max-width: 300px;
+  }
+
+  &__infos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
     }
   }
 
-  &__body {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    align-items: start;
+  &__aside-logo {
+    margin-top: auto;
+    opacity: 0.2;
+  }
+
+  &__form-panel {
+    background: $color-bg;
+    padding: clamp(3rem, 8vw, 5rem) clamp(2rem, 5vw, 3rem);
 
     @include respond-to('lg') {
-      grid-template-columns: 1fr 340px;
+      padding-right: max(2.5rem, calc((100vw - #{$container-max}) / 2 + 2.5rem));
     }
   }
 
   &__form {
-    background: $color-bg-card;
-    border: 1px solid $color-border;
-    border-radius: $radius-lg;
-    padding: clamp(1.5rem, 4vw, 2.5rem);
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    box-shadow: $shadow-sm;
+    gap: 1.25rem;
+    max-width: 600px;
   }
 
   &__row {
@@ -258,12 +280,8 @@ const deadlines = [
     flex-direction: column;
     gap: 0.4rem;
 
-    &--full {
-      grid-column: 1 / -1;
-    }
-
     label {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: $color-text;
     }
@@ -275,17 +293,15 @@ const deadlines = [
       font-family: $font-sans;
       font-size: 0.9rem;
       color: $color-text;
-      background: $color-bg;
-      border: 1px solid $color-border;
+      background: $color-bg-card;
+      border: 1.5px solid $color-border;
       border-radius: $radius-sm;
       padding: 0.625rem 0.875rem;
       transition: border-color $transition, box-shadow $transition;
       outline: none;
       appearance: none;
 
-      &::placeholder {
-        color: $color-text-subtle;
-      }
+      &::placeholder { color: $color-text-subtle; }
 
       &:focus {
         border-color: $color-accent;
@@ -303,22 +319,31 @@ const deadlines = [
 
     textarea {
       resize: vertical;
-      min-height: 120px;
+      min-height: 110px;
       line-height: 1.65;
+    }
+
+    &--hint {
+      background: $color-accent-bg;
+      border-radius: $radius-sm;
+      padding: 0.875rem 1rem;
+      gap: 0.3rem;
+
+      strong {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: $color-text;
+      }
+
+      span {
+        font-size: 0.8rem;
+        color: $color-text-muted;
+        line-height: 1.6;
+      }
     }
   }
 
-  &__file-hint {
-    font-size: 0.825rem;
-    color: $color-text-muted;
-    line-height: 1.65;
-    background: $color-accent-bg;
-    border: 1px solid #EDCFB8;
-    border-radius: $radius-sm;
-    padding: 0.75rem 1rem;
-  }
-
-  &__submit-row {
+  &__actions {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -326,7 +351,6 @@ const deadlines = [
 
   &__submit {
     align-self: flex-start;
-    font-size: 0.925rem;
   }
 
   &__legal {
@@ -350,44 +374,6 @@ const deadlines = [
       background: #fef2f2;
       color: #991b1b;
       border: 1px solid #fecaca;
-    }
-  }
-
-  &__reassurances {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-
-  &__reassurance {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    background: $color-bg-card;
-    border: 1px solid $color-border;
-    border-radius: $radius-md;
-    padding: 1rem 1.25rem;
-
-    svg {
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    div {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    strong {
-      font-size: 0.875rem;
-      font-weight: 700;
-      color: $color-text;
-    }
-
-    span {
-      font-size: 0.8rem;
-      color: $color-text-muted;
     }
   }
 }

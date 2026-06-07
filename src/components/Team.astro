@@ -1,76 +1,53 @@
 ---
-const members = [
-  {
-    seed: 'marco-ferretti',
-    name: 'Marco Ferretti',
-    role: 'Fondateur & carreleur',
-    since: '8 ans de métier',
-    quote: "J'ai des belles réalisations, des trucs avec de la mosaïque faite main… je veux que ça se voie.",
-  },
-  {
-    seed: 'ferretti-employe',
-    name: 'Notre nouvelle recrue',
-    role: 'Carreleur',
-    since: 'Équipe depuis 2025',
-    quote: "Trois personnes, une seule façon de travailler : bien.",
-  },
-]
+import { site } from '@/config/site'
 ---
 
 <section id="equipe" class="team">
-  <div class="team__inner">
-    <div class="team__header">
-      <span class="section-tag">L'équipe</span>
-      <h2>Derrière chaque chantier,<br/>un artisan qui s'engage.</h2>
-      <p>
-        Ferretti Carrelage c'est une petite équipe — trois personnes,
-        un seul standard de qualité. Marco supervise personnellement
-        chaque réalisation.
-      </p>
-    </div>
+  <div class="team__photo-panel">
+    <img
+      src="https://picsum.photos/seed/marco-ferretti/700/900"
+      alt="Marco Ferretti — Ferretti Carrelage"
+      width="700"
+      height="900"
+      loading="lazy"
+    />
+  </div>
 
-    <div class="team__grid">
-      {members.map(member => (
-        <article class="team__card">
-          <div class="team__card-img">
-            <img
-              src={`https://picsum.photos/seed/${member.seed}/400/400`}
-              alt={`${member.name} — Ferretti Carrelage`}
-              width="400"
-              height="400"
-              loading="lazy"
-            />
-          </div>
-          <div class="team__card-body">
-            <div class="team__card-meta">
-              <h3>{member.name}</h3>
-              <span class="team__card-role">{member.role}</span>
-              <span class="team__card-since">{member.since}</span>
-            </div>
-            <blockquote class="team__card-quote">
-              "{member.quote}"
-            </blockquote>
-          </div>
-        </article>
-      ))}
+  <div class="team__content">
+    <p class="team__label">L'artisan</p>
+
+    <h2 class="team__name">Marco Ferretti</h2>
+    <p class="team__role">Fondateur & carreleur · 8 ans de métier</p>
+
+    <blockquote class="team__quote">
+      "J'ai pas besoin de trucs compliqués. Juste : qui je suis, ce que je fais,
+      mes photos, et un moyen de me contacter. Les clients, ils voient le travail
+      et ils savent."
+    </blockquote>
+
+    <div class="team__facts">
+      <div class="team__fact">
+        <strong>3</strong>
+        <span>personnes dans l'équipe</span>
+      </div>
+      <div class="team__fact">
+        <strong>8 ans</strong>
+        <span>d'expérience terrain</span>
+      </div>
+      <div class="team__fact">
+        <strong>100%</strong>
+        <span>chantiers dans l'Hérault</span>
+      </div>
     </div>
 
     <div class="team__zone">
-      <div class="team__zone-label">Zone d'intervention</div>
-      <div class="team__zone-cities">
-        <span>Montpellier</span>
-        <span class="team__zone-sep">—</span>
-        <span>Sète</span>
-        <span class="team__zone-sep">—</span>
-        <span>Béziers</span>
-        <span class="team__zone-sep">—</span>
-        <span>Agde</span>
-        <span class="team__zone-sep">—</span>
-        <span>Pézenas</span>
-        <span class="team__zone-sep">—</span>
-        <span>Hérault</span>
-      </div>
+      <p class="team__zone-label">Zone d'intervention</p>
+      <p class="team__zone-cities">
+        Montpellier · Sète · Béziers · Agde · Pézenas · Hérault
+      </p>
     </div>
+
+    <a href="#contact" class="btn btn--primary">Parler à Marco</a>
   </div>
 </section>
 
@@ -78,153 +55,127 @@ const members = [
 @use '../styles/foundations' as *;
 
 .team {
-  background: $color-bg-alt;
-  padding-block: $section-padding;
+  display: grid;
+  grid-template-columns: 1fr;
 
-  &__inner {
-    @include container;
+  @include respond-to('lg') {
+    grid-template-columns: 420px 1fr;
+    min-height: 640px;
   }
 
-  &__header {
-    max-width: 600px;
-    margin-bottom: 3.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-    h2 {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-
-    p {
-      color: $color-text-muted;
-      line-height: 1.75;
-    }
-  }
-
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-
-    @include respond-to('md') {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  &__card {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    background: $color-bg-card;
-    border: 1px solid $color-border;
-    border-radius: $radius-lg;
+  &__photo-panel {
+    position: relative;
     overflow: hidden;
-    box-shadow: $shadow-sm;
+    min-height: 60vw;
+    background: $color-bg-alt;
 
-    @include respond-to('md') {
-      flex-direction: row;
-    }
-  }
-
-  &__card-img {
-    flex-shrink: 0;
-    width: 100%;
-
-    @include respond-to('md') {
-      width: 160px;
+    @include respond-to('lg') {
+      min-height: unset;
     }
 
     img {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: 220px;
+      height: 100%;
       object-fit: cover;
-
-      @include respond-to('md') {
-        height: 100%;
-      }
+      object-position: center top;
     }
   }
 
-  &__card-body {
-    padding: 1.5rem;
+  &__content {
+    background: $color-accent-bg;
+    padding: clamp(3rem, 8vw, 5rem) clamp(2rem, 6vw, 4rem);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     justify-content: center;
-  }
+    gap: 1.75rem;
 
-  &__card-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-
-    h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: $color-text;
+    @include respond-to('lg') {
+      padding-right: max(2.5rem, calc((100vw - #{$container-max}) / 2 + 2.5rem));
     }
   }
 
-  &__card-role {
-    font-size: 0.875rem;
-    font-weight: 600;
+  &__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: $color-accent;
   }
 
-  &__card-since {
-    font-size: 0.8rem;
-    color: $color-text-subtle;
+  &__name {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: $color-text;
+    line-height: 1.1;
   }
 
-  &__card-quote {
-    margin: 0;
+  &__role {
     font-size: 0.9rem;
+    font-weight: 500;
+    color: $color-text-muted;
+    margin-top: -1rem;
+  }
+
+  &__quote {
+    margin: 0;
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
     font-style: italic;
     color: $color-text-muted;
-    line-height: 1.65;
-    border-left: 3px solid $color-accent-bg;
-    padding-left: 0.875rem;
+    line-height: 1.75;
+    border-left: 3px solid $color-accent;
+    padding-left: 1.25rem;
+    max-width: 480px;
+  }
+
+  &__facts {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  &__fact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    strong {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: $color-accent;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    span {
+      font-size: 0.75rem;
+      color: $color-text-muted;
+      font-weight: 500;
+    }
   }
 
   &__zone {
-    margin-top: 3.5rem;
-    padding: 1.5rem 2rem;
-    background: $color-bg-card;
-    border: 1px solid $color-border;
-    border-radius: $radius-md;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    align-items: center;
-    text-align: center;
+    gap: 0.35rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid $color-border;
   }
 
   &__zone-label {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: $color-text-subtle;
   }
 
   &__zone-cities {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 0.75rem;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.975rem;
+    font-size: 0.875rem;
     font-weight: 600;
     color: $color-text;
-  }
-
-  &__zone-sep {
-    color: $color-accent;
-    font-weight: 400;
   }
 }
 </style>

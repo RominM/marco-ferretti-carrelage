@@ -5,7 +5,7 @@ import { site } from '@/config/site'
 <header class="nav">
   <div class="nav__inner">
     <a href="/" class="nav__logo" aria-label={site.fullName}>
-      <svg viewBox="0 0 40 40" width="36" height="36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg viewBox="0 0 40 40" width="34" height="34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <polygon points="20,0 30,10 20,20 10,10" fill="#E0621C"/>
         <polygon points="30,10 40,20 30,30 20,20" fill="#2B5FA8"/>
         <polygon points="10,10 20,20 10,30 0,20" fill="#D4607A"/>
@@ -104,18 +104,14 @@ import { site } from '@/config/site'
       color: $color-text-muted;
       transition: color $transition;
 
-      &:hover {
-        color: $color-accent;
-      }
+      &:hover { color: $color-accent; }
     }
   }
 
   &__actions {
     display: none;
 
-    @include respond-to('lg') {
-      display: block;
-    }
+    @include respond-to('lg') { display: block; }
   }
 
   &__toggle {
@@ -130,9 +126,7 @@ import { site } from '@/config/site'
     border: none;
     flex-shrink: 0;
 
-    @include respond-to('lg') {
-      display: none;
-    }
+    @include respond-to('lg') { display: none; }
 
     span {
       display: block;
@@ -152,7 +146,6 @@ import { site } from '@/config/site'
       @include container;
       display: flex;
       flex-direction: column;
-      gap: 0;
       padding-top: 1rem;
       padding-bottom: 1.5rem;
 
@@ -163,9 +156,7 @@ import { site } from '@/config/site'
         border-bottom: 1px solid $color-border;
         transition: color $transition;
 
-        &:hover {
-          color: $color-accent;
-        }
+        &:hover { color: $color-accent; }
       }
 
       .btn {
