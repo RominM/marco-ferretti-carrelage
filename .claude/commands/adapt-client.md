@@ -191,6 +191,18 @@ feat: adapt template for [site.fullName]
 
 ---
 
+## Étape 7 — Rappel post-exécution
+
+Afficher :
+```
+Site créé et poussé sur la branche de travail.
+
+□ Merger sur main pour déclencher le déploiement Netlify :
+  git checkout main && git merge [branch] && git push origin main
+```
+
+---
+
 ## Règles absolues
 
 - Ne jamais recréer ce qui existe déjà dans le template (monitoring, SEO, reset, mixins)
